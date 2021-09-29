@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="sortcut icon" href="logo.png.png" type="image/png" />
+    <link rel="sortcut icon" href="logo.png.png" type="image/png" />
+    <body style="background-color:rgb(211, 211, 211)">
+        <p> <img src="logo.png.png" width="60" height="50" align="left">
+        </p>
+      
+    
+    </body>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>INTEGRA TRIBUTO</title>
+    <script type="text/javascript" src="../javascript/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../javascript/FuncoesJavascript.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">    <script src="../javascript/bootstrap.bundle.min.js"></script>
+<div class="row">
+     <form class="col-11" action="./menu.html" method="POST"
+        style="margin: 0 auto;" id="incluircliente" onsubmit="return validateForm()">
+        <div class="col-11">
+            <div class="col-12 col-md-12">
+  
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-dadosclientes" role="tabpanel"
+                        aria-labelledby="pills-dadosclientes-tab" style="margin-left: 5px; margin-right: 5px">
+                        
+                        <div class="row mb-2">
+                            <div class="col-12 col-md-8 mb-2">
+                                <input class="form-control form-control-sm" required type="text" id="cli_razaosocial"
+                                    name="cli_razaosocial" placeholder="Razão Social">
+                            </div>
+                            <div class="col-12 col-md-4 mb-2">
+                                <div class="input-group">
+                                    <input class="form-control form-control-sm cpf-mask" required type="text"
+                                        id="cli_cnpj" name="cli_cnpj" placeholder="CPF/CNPJ"
+                                        onkeypress="return SomenteNumero(event)">
+                                    <div class="input-group-append">
+                                        <button type="button" onclick="pesquisacnpj()"
+                                            class="input-group-text btn btn-info btn-sm"><i
+                                                class="fas fa-search"></i></button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-12 col-md-7 mb-2">
+                                <input class="form-control form-control-sm" required type="text" id="cli_fantasia"
+                                    name="cli_fantasia" placeholder="Nome Fantasia">
+                            </div>
+                            <div class="col-12 col-sm-5">
+                                <input class="form-control form-control-sm" type="text" id="cli_ie" name="cli_ie"
+                                    placeholder="RG/Insc Estadual" onkeypress="return SomenteNumero(event)">
+                            </div>
+
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4 col-md-3 mb-3">
+                                <input class="form-control form-control-sm cep-mask" type="text" id="cli_cep"
+                                    name="cli_cep" placeholder="CEP" size="10" maxlength="9"
+                                    onblur="pesquisacep(this.value)" autocomplete="off">
+                            </div>
+                            <div class="col-3 col-md-2 mb-2">
+                                <input class="form-control form-control-sm" type="text" id="cli_numendereco"
+                                    name="cli_numendereco" placeholder="Nº">
+                            </div>
+                            <div class="col-12 col-md-7">
+                                <input class="form-control form-control-sm" type="text" id="cli_endereco"
+                                    name="cli_endereco" placeholder="Endereço">
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-12 col-md-5 mb-2">
+                                <input class="form-control form-control-sm" type="text" id="cli_bairro"
+                                    name="cli_bairro" placeholder="Bairro">
+                            </div>
+                            <div class="col-12 col-md-3 mb-2">
+                                <select required class="form-control form-control-sm" id="est_codigo"
+                                    data-style="btn-secondary" onchange="buscaCidades()">
+                                    <option selected value="">Estado</option>
+                                    
+                                    <option value="12">
+                                        ACRE
+                                    </option>
+                                    
+                                    <option value="27">
+                                        ALAGOAS
+                                    </option>
+                                    
+                                    <option value="16">
+                                        AMAPÁ
+                                    </option>
+                                    
+                                    <option value="13">
+                                        AMAZONAS
+                                    </option>
+                                    
+                                    <option value="29">
+                                        BAHIA
+                                    </option>
+                                    
+                                    <option value="23">
+                                        CEARÁ
+                                    </option>
+                                    
+                                    <option value="53">
+                                        DISTRITO FEDERAL
+                                    </option>
+                                    
+                                    <option value="32">
+                                        ESPÍRITO SANTO
+                                    </option>
+                                    
+                                    <option value="52">
+                                        GOIÁS
+                                    </option>
+                                    
+                                    <option value="21">
+                                        MARANHÃO
+                                    </option>
+                                    
+                                    <option value="51">
+                                        MATO GROSSO
+                                    </option>
+                                    
+                                    <option value="50">
+                                        MATO GROSSO DO SUL
+                                    </option>
+                                    
+                                    <option value="31">
+                                        MINAS GERAIS
+                                    </option>
+                                    
+                                    <option value="15">
+                                        PARÁ
+                                    </option>
+                                    
+                                    <option value="25">
+                                        PARAÍBA
+                                    </option>
+                                    
+                                    <option value="PR">
+                                        PARANÁ
+                                    </option>
+                                    
+                                    <option value="26">
+                                        PERNAMBUCO
+                                    </option>
+                                    
+                                    <option value="22">
+                                        PIAUÍ
+                                    </option>
+                                    
+                                    <option value="33">
+                                        RIO DE JANEIRO
+                                    </option>
+                                    
+                                    <option value="24">
+                                        RIO GRANDE DO NORTE
+                                    </option>
+                                    
+                                    <option value="43">
+                                        RIO GRANDE DO SUL
+                                    </option>
+                                    
+                                    <option value="11">
+                                        RONDÔNIA
+                                    </option>
+                                    
+                                    <option value="14">
+                                        RORAIMA
+                                    </option>
+                                    
+                                    <option value="42">
+                                        SANTA CATARINA
+                                    </option>
+                                    
+                                    <option value="35">
+                                        SÃO PAULO
+                                    </option>
+                                    
+                                    <option value="28">
+                                        SERGIPE
+                                    </option>
+                                    
+                                    <option value="17">
+                                        TOCANTINS
+                                    </option>
+                                    
+                                </select>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                
+                                <input type="text" id="localidade" class="form-control form-control-sm" placeholder="Cidade" name="">
+                 
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+
+                            <div class="col-12 col-sm-4">
+                                <input class="form-control form-control-sm" type="text" id="cli_foneresidencial"
+                                    name="cli_foneresidencial" placeholder="Telefone">
+                            </div>
+
+                            <div class="col-12 col-sm-4">
+                                <input class="form-control form-control-sm" type="text" id="cli_celular"
+                                    name="cli_celular" placeholder="Celular">
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <input class="form-control form-control-sm" type="text" id="cli_whatsapp"
+                                    name="cli_whatsapp" placeholder="WhatsApp">
+                            </div>
+                        </div>
+            
+
+                        <div class="row mb-2">
+                            <div class="col-12 col-md-6 mb-2">
+                                <select required class="form-control form-control-sm" name="cli_tipopessoa"
+                                    id="cli_tipopessoa" data-style="btn-secondary">
+                                    <option value="">Tipo Pessoa</option>
+                                    <option selected value="J">JURÍDICA</option>
+                                    <option value="F">FÍSICA</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-md-6 mb-2">
+                                <select required class="form-control form-control-sm" name="rma_codigo" id="rma_codigo"
+                                    data-style="btn-secondary">
+                                    <option selected value="">Ramo Atividade</option>
+                                    
+                                    <option value="56">
+                                        AÇOUGUE
+                                    </option>
+                                    
+                                    <option value="24">
+                                        AGROPECUÁRIA
+                                    </option>
+                                    
+                                    <option value="10">
+                                        ARMARINHOS
+                                    </option>
+                                    
+                                    <option value="46">
+                                        ARTIGOS ESPORTIVOS
+                                    </option>
+                                    
+                                    <option value="15">
+                                        ATACADO
+                                    </option>
+                                    
+                                    <option value="35">
+                                        AUTO-ELETRICA
+                                    </option>
+                                    
+                                    <option value="51">
+                                        AVIAMENTOS
+                                    </option>
+                                    
+                                    <option value="23">
+                                        CAFETERIAS
+                                    </option>
+                                    
+                                    <option value="47">
+                                        COM. DE BRINQUEDOS E 1,99
+                                    </option>
+                                    
+                                    <option value="29">
+                                        COMERC. MARMORES
+                                    </option>
+                                    
+                                    <option value="28">
+                                        COMERC. PROD. RECICLAVEL
+                                    </option>
+                                    
+                                    <option value="27">
+                                        COMERC. SUCATAS
+                                    </option>
+                                    
+                                    <option value="32">
+                                        COMÉRCIO DE BORRACHAS
+                                    </option>
+                                    
+                                    <option value="38">
+                                        COMÉRCIO DE CALHAS
+                                    </option>
+                                    
+                                    <option value="36">
+                                        COMERCIO DE COLCHÕES
+                                    </option>
+                                    
+                                    <option value="45">
+                                        COMÉRCIO DE EXTINTORES
+                                    </option>
+                                    
+                                    <option value="44">
+                                        COMÉRCIO DE GÁS E ÁGUA
+                                    </option>
+                                    
+                                    <option value="49">
+                                        COMÉRCIO DE MÓVEIS
+                                    </option>
+                                    
+                                    <option value="53">
+                                        COMÉRCIO DE VEÍCULOS
+                                    </option>
+                                    
+                                    <option value="55">
+                                        COMÉRCIOS DE INSTRUMENTOS MUSI
+                                    </option>
+                                    
+                                    <option value="12">
+                                        COSMÉTICOS
+                                    </option>
+                                    
+                                    <option value="57">
+                                        DESCONSIDERAR
+                                    </option>
+                                    
+                                    <option value="25">
+                                        DIST. PEÇAS E ACESSÓRIOS AUTOM
+                                    </option>
+                                    
+                                    <option value="26">
+                                        DISTRIB. PROD. LIMPEZA
+                                    </option>
+                                    
+                                    <option value="16">
+                                        DISTRIBUIDORA DE ALIMENTOS
+                                    </option>
+                                    
+                                    <option value="17">
+                                        DISTRIBUIDORA DE BEBIDAS
+                                    </option>
+                                    
+                                    <option value="21">
+                                        DISTRIBUIDORA DE BOLAS
+                                    </option>
+                                    
+                                    <option value="20">
+                                        DISTRIBUIDORA DE DOCES
+                                    </option>
+                                    
+                                    <option value="42">
+                                        DISTRIBUIDORA DE EMBALAGENS
+                                    </option>
+                                    
+                                    <option value="41">
+                                        DISTRIBUIDORA DE MEDICAMENTOS
+                                    </option>
+                                    
+                                    <option value="22">
+                                        DISTRIBUIDORA DE PAPEL
+                                    </option>
+                                    
+                                    <option value="39">
+                                        FLORICULTURA
+                                    </option>
+                                    
+                                    <option value="52">
+                                        FRIGORIFICO
+                                    </option>
+                                    
+                                    <option value="48">
+                                        FUNERÁRIA
+                                    </option>
+                                    
+                                    <option value="33">
+                                        INDUSTRIA DE BOLAS
+                                    </option>
+                                    
+                                    <option value="30">
+                                        INDUSTRIA DE MÓVEIS
+                                    </option>
+                                    
+                                    <option value="37">
+                                        INDUSTRIA DE VASSOURA
+                                    </option>
+                                    
+                                    <option value="11">
+                                        INDUSTRIAS
+                                    </option>
+                                    
+                                    <option value="31">
+                                        INDUSTRIAS DE METAIS
+                                    </option>
+                                    
+                                    <option value="1">
+                                        LOJA DEPARTAMENTOS
+                                    </option>
+                                    
+                                    <option value="4">
+                                        LOJAS DE CONFECÇÕES
+                                    </option>
+                                    
+                                    <option value="43">
+                                        MATERIAIS ELETRICOS
+                                    </option>
+                                    
+                                    <option value="19">
+                                        MATERIAL DE CONSTRUÇÃO
+                                    </option>
+                                    
+                                    <option value="2">
+                                        MERCADOS
+                                    </option>
+                                    
+                                    <option value="7">
+                                        MERCEARIA
+                                    </option>
+                                    
+                                    <option value="9">
+                                        OUTROS
+                                    </option>
+                                    
+                                    <option value="3">
+                                        PANIFICADORAS E CONFEITARIAS
+                                    </option>
+                                    
+                                    <option value="14">
+                                        PAPELARIA
+                                    </option>
+                                    
+                                    <option value="34">
+                                        PASTELARIA
+                                    </option>
+                                    
+                                    <option value="6">
+                                        PETSHOP
+                                    </option>
+                                    
+                                    <option value="8">
+                                        POSTO DE COMBUSTIVEL
+                                    </option>
+                                    
+                                    <option value="54">
+                                        RELOJOARIA
+                                    </option>
+                                    
+                                    <option value="13">
+                                        RESTAURANTE
+                                    </option>
+                                    
+                                    <option value="40">
+                                        SERRARIA
+                                    </option>
+                                    
+                                    <option value="5">
+                                        SORVETERIAS
+                                    </option>
+                                    
+                                    <option value="50">
+                                        TRANSPORTADORA
+                                    </option>
+                                    
+                                    <option value="18">
+                                        VAREJO
+                                    </option>
+                                    
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="row mb-12">
+                            <div class="col-12 col-md-12 mb-2">
+                                <input class="form-control form-control-sm" type="text" id="cli_email" name="cli_email"
+                                    placeholder="Email">
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    
+                    <div class="tab-pane fade" id="pills-parametros" role="tabpanel"
+                        aria-labelledby="pills-parametros-tab" style="margin-left: 5px; margin-right: 5px">
+                        <div class="scroll">
+                            <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+                                
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-5">
+
+                    <button class="form-control btn-success " type="submit">Salvar</button>
+               
+            </div>
+            <br>
+            <div class="col-6 col-md-5 ">
+                <a href="./menu.html">
+                    <button class="form-control btn-danger" type="button">Cancelar</button>
+                </a>
+            </div>
+                
+            
+        </div>
+    </form>
+
+<script>
+    function buscaCidades() {
+        var e = document.getElementById("est_codigo");
+        var est_codigo = e.options[e.selectedIndex].value;
+
+        $.ajax({
+            url: "/buscaCidades",
+            type: "POST",
+            data: {
+                est_codigo: est_codigo
+            },
+            success: function (data) {
+                console.log(data[0])
+                if (data != null) {
+                    var cid_ibge = $('#cid_ibge');
+                    cid_ibge.find('option').remove();
+                    for (var h = 0; h < data.length; h++) {
+                        $('<option>').val(data[h].cid_ibge).text(data[h].cid_nome).appendTo(cid_ibge);
+                    }
+                    $('#cid_ibge').selectpicker('refresh');
+                }
+            }
+        })
+    }
+
+    function limpa_formulário_cep() {
+        //Limpa valores do formulário de cep.
+        document.getElementById('cli_endereco').value = ("");
+        document.getElementById('cli_bairro').value = ("");
+    }
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('cli_endereco').value = (conteudo.logradouro);
+            document.getElementById('cli_bairro').value = (conteudo.bairro);
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }
+    function pesquisacep(valor) {
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+            //Valida o formato do CEP.
+            if (validacep.test(cep)) {
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+                //Sincroniza com o callback.
+                script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback_cep';
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+                console.dir(script)
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
+    };
+
+    function pesquisacnpj() {
+        var valor = document.getElementById('cli_cnpj').value
+        var cnpj = valor.replace(/[^\d]+/g, '');
+        if (cnpj == '') {
+            return false;
+        } if (cnpj.length != 14) {
+            limpa_formulário_cnpj();
+            alert("CNPJ invalido.")
+            return false;
+        }
+        // Elimina CNPJs invalidos conhecidos
+        if (cnpj == "00000000000000" ||
+            cnpj == "11111111111111" ||
+            cnpj == "22222222222222" ||
+            cnpj == "33333333333333" ||
+            cnpj == "44444444444444" ||
+            cnpj == "55555555555555" ||
+            cnpj == "66666666666666" ||
+            cnpj == "77777777777777" ||
+            cnpj == "88888888888888" ||
+            cnpj == "99999999999999") {
+            limpa_formulário_cnpj();
+            alert("CNPJ invalido.");
+            return false;
+        }
+        var script = document.createElement('script');
+        script.src = 'https://www.receitaws.com.br/v1/cnpj/' + cnpj + '/?callback=meu_callback_cnpj';
+        document.body.appendChild(script);
+
+    }
+
+    function meu_callback_cep(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('cli_bairro').value = (conteudo.bairro);
+            document.getElementById('cli_endereco').value = (conteudo.logradouro);
+            document.getElementById('localidade').value = (conteudo.localidade);
+            document.getElementById('est_codigo').value = (conteudo.uf);
+            var valor = conteudo.cep
+            var cep2 = valor.replace(/[^\d]+/g, '')
+            document.getElementById('cli_cep').value = (cep2);
+
+        }
+    }
+    
+    var dados = [];
+    function meu_callback_cnpj(conteudo) {
+        if (!("erro" in conteudo)) {
+            
+            dados.push(JSON.stringify(conteudo))
+            localStorage.dados = dados;
+            //Atualiza os campos com os valores.
+            document.getElementById('cli_razaosocial').value = (conteudo.nome);
+            document.getElementById('cli_fantasia').value = (conteudo.fantasia);
+           // document.getElementById('cli_complemento').value = (conteudo.complemento);
+            document.getElementById('cli_bairro').value = (conteudo.bairro);
+            document.getElementById('cli_endereco').value = (conteudo.logradouro);
+            document.getElementById('cli_numendereco').value = (conteudo.numero);
+            document.getElementById('localidade').value = (conteudo.municipio);
+            document.getElementById('est_codigo').value = (conteudo.uf);
+            var valor = conteudo.cep
+            var cep2 = valor.replace(/[^\d]+/g, '')
+            document.getElementById('cli_cep').value = (cep2);
+
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulário_cnpj();
+            alert("CEP não encontrado.");
+        }
+    }
+    function limpa_formulário_cnpj() {
+        //Limpa valores do formulário de cep.
+        document.getElementById('cli_razaosocial').value = ("");
+        document.getElementById('cli_fantasia').value = ("");
+        document.getElementById('cli_complemento').value = ("");
+        document.getElementById('cli_bairro').value = ("");
+        document.getElementById('cli_logradouro').value = ("");
+        document.getElementById('cli_numendereco').value = ("");
+        document.getElementById('cli_cep').value = ("");
+    }
+
+
+
+
+    function SomenteNumero(e) {
+        var tecla = (window.event) ? event.keyCode : e.which;
+        if ((tecla > 47 && tecla < 58)) return true;
+        else {
+            if (tecla == 8 || tecla == 0) return true;
+            else return false;
+        }
+    }
+
+    function disabled() {
+        document.getElementById("men_nomemenu").disabled = true;
+        document.getElementById("men_nomemenupai").disabled = true;
+        document.getElementById("men_filhos").disabled = true;
+        document.getElementById("men_visivel").disabled = true;
+        document.getElementById("men_caption").disabled = true;
+    }
+    function enable() {
+        document.getElementById("men_nomemenu").disabled = false;
+        document.getElementById("men_nomemenupai").disabled = false;
+        document.getElementById("men_filhos").disabled = false;
+        document.getElementById("men_visivel").disabled = false;
+        document.getElementById("men_caption").disabled = false;
+    }
+
+</script>

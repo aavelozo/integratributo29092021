@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar-se</title>
+    <script type="text/javascript" src="../javascript/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../javascript/FuncoesJavascript.js"></script>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../javascript/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand">Cadastro de usuário</a>                
+        </div>
+    </nav> 
+    <div class="container-fluid">
+               
+        <div class="row">
+            <div class="col">
+                <!--SELECAO DO TIPO DE PESSOA-->   
+                <form onsubmit="return false;">
+                    <div class="row">
+                        <div class="col">
+                            <h6>
+                                Tipo Pessoa
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check form-check-inline">
+                                <input class="form-radio-input" type="radio" id="radio_tp_pessoa_cpf" name="radio_tp_pessoa" value="cpf" onchange="selecinou_tipo_pessoa(this)" required checked/>
+                                <label for="radio_tp_pessoa_cpf">Cpf</label>
+                            </div>
+                            <div class="form-check form-check-inline">            
+                                <input class="form-radio-input" type="radio" id="radio_tp_pessoa_cnpj" name="radio_tp_pessoa" value="cnpj" onchange="selecinou_tipo_pessoa(this)" required />
+                                <label for="radio_tp_pessoa_cnpj">Cnpj</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>                    
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <!--FORM DADOS PESSOA-->
+                <form id="form_dados" onsubmit="enviar_cadastro(this); return false;">
+                    <div class="row mt-1">
+                        <div class="col-3">
+                            <label class="form-label" for="cpf_cnpj">Cpf</label>
+                            <div class="input-group">
+                                <input class="form-control" type="text" id="cpf_cnpj" placeholder="(Cpf)" onchange="atualizou_cnpj(this)" required/>
+                                <button class="btn btn-outline-secondary especifico_cnpj d-none" type="button" id="btn_pesquisa_cnpj" onclick="atualizou_cnpj(this)">...</button>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label class="form-label" for="nome_razao">Nome</label>
+                            <input class="form-control" type="text" id="nome_razao" placeholder="(Nome)" required/>
+                        </div>
+                        <div class="col especifico_cnpj d-none">
+                            <label class="form-label" for="nome_fantasia">Fantasia</label>
+                            <input class="form-control" type="text" id="nome_fantasia" placeholder="(Fantasia)"/>
+                        </div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-3">
+                            <label class="form-label" for="cep">Cep</label>
+                            <div class="input-group">
+                                <input class="form-control" type="text" id="cep" placeholder="(cep)" onchange="atualizou_cep(this)" required/>
+                                <button class="btn btn-outline-secondary" type="button" onclick="atualizou_cep(this)">...</button>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <label class="form-label" for="estado">Estado</label>
+                            <select class="form-select" id="estado" required>
+                                <option value="(Selecine)">(Selecione)</option>
+                                <option value="PR">PR</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label class="form-label" for="cidade">Cidade</label>
+                            <select class="form-select" id="cidade" required>
+                                <option value="(Selecine)">(Selecione)</option>
+                                <option value="Cascavel">Cascavel</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-3">
+                            <label class="form-label" for="bairro">Bairro</label>
+                            <input class="form-control" type="text" id="bairro" placeholder="(Bairro)" required/>
+                        </div>
+                        <div class="col">
+                            <label class="form-label" for="logradouro">Logradouro(Rua/Avenida)</label>
+                            <input class="form-control" type="text" id="logradouro" placeholder="(Logradouro(Rua/Avenida))" required/>
+                        </div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-3">
+                            <label class="form-label" for="numero">Numero</label>
+                            <input class="form-control" type="text" id="numero" placeholder="(Numero)" required/>
+                        </div>
+                        <div class="col">
+                            <label class="form-label" for="complemento">Complemento</label>
+                            <input class="form-control" type="text" id="complemento" placeholder="(Compelemento)" />
+                        </div>                        
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-3">
+                            <label class="form-label" for="fone">Fone</label>
+                            <input class="form-control" type="text" id="fone" placeholder="(Fone)" required/>
+                        </div>
+                        <div class="col-3">
+                            <label class="form-label" for="celular">Celular</label>
+                            <input class="form-control" type="text" id="celular" placeholder="(Celular)" required/>
+                        </div> 
+                        <div class="col">
+                            <label class="form-label" for="outrosfones">Outros fones</label>
+                            <input class="form-control" type="text" id="outrosfones" placeholder="(Outros fones)" />
+                        </div>                        
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col">
+                            <label class="form-label" for="email">Email</label>
+                            <input class="form-control" type="text" id="email" placeholder="(Email)" required/>
+                        </div>                                               
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-3 especifico_cnpj d-none">
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label">
+                                        Matris/Filial
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-check form-check-inline">                               
+                                        <input class="form-radio-input" type="radio" id="radio_matriz_filial_matriz" name="radio_matriz_filial" value="matriz" required checked/>
+                                        <label class="form-label" for="radio_matriz_filial_matriz">Matriz</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-radio-input" type="radio" id="radio_matriz_filial_filial" name="radio_matriz_filial" value="filial" required />
+                                        <label class="form-label" for="radio_matriz_filial_filial">Filial</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label">
+                                        Produtor Rural
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-check form-check-inline">                               
+                                        <input class="form-radio-input" type="radio" id="radio_produtor_rural_sim" name="radio_produtor_rural" value="sim" required />
+                                        <label class="form-label" for="radio_produtor_rural_sim">Sim</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-radio-input" type="radio" id="radio_produtor_rural_nao" name="radio_produtor_rural" value="nao" required checked/>
+                                        <label class="form-label" for="radio_produtor_rural_nao">Não</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="row mt-1 especifico_cnpj d-none">                        
+                        <div class="col-3">
+                            <label class="form-label" for="nat_juridica">Natureza Jurídica</label>
+                            <select class="form-select" id="nat_juridica" required>
+                                <option value="(Selecine)">(Selecione)</option>
+                                <option value="206-2 - Sociedade Empresária Limitada">206-2 - Sociedade Empresária Limitada</option>
+
+                            </select>
+                        </div>
+                        <div class="col-3">
+                            <label class="form-label" for="porte">Porte</label>
+                            <select class="form-select" id="porte" required>
+                                <option value="(Selecine)">(Selecione)</option>
+                                <option value="micro empresa">Micro Empresa</option>
+                                <option value="empresa de pequeno porte">Empresa de Pequeno Porte</option>                                
+                                <option value="demais">Demais</option>
+                            </select>
+                        </div> 
+                        <div class="col-6">
+                            <label class="form-label" for="ativ_princ">Atividade Principal(CNAE)</label>
+                            <select class="form-select" id="ativ_princ" required>
+                                <option value="(Selecine)">(Selecione)</option>
+                                <option value="47.11-3-02">47.11-3-02 Comércio varejista de mercadorias em geral, com predominância de produtos alimentícios - supermercados</option>                                
+                                <option value="47.12-1-00">47.12-1-00 Comércio varejista de mercadorias em geral, com predominância de produtos alimentícios - minimercados, mercearias e armazéns</option>
+                            </select>
+                        </div>                        
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col">
+                            <label class="form-label" for="senha">Senha</label>
+                            <input class="form-control" type="password" id="senha" placeholder="(Senha)" required/>
+                        </div>
+                        <div class="col">    
+                            <label class="form-label" for="repsenha">Repetir Senha</label>
+                            <input class="form-control" type="password" id="repsenha" placeholder="(Repita senha)" required/>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <input class="btn btn-primary" type="submit" value="Enviar" />
+                                <input class="btn btn-danger" type="reset" value="Limpar" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
